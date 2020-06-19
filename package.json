@@ -4,20 +4,20 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-
     "build:css": "node-sass --output-style compressed ./src/style/style.scss -o ./dist/",
-
     "start:server": "browser-sync start --server --files './index.html, ./src/**/*, ./dist/**/* '",
-
     "watch:scss": "onchange -v \"src/style/style.scss\" -- npm run build:css",
-
-    "dev": "parallelshell \"npm run start:server\" \"npm run watch:scss\""
-
+    "watch:eslint":"onchange -v \"src/js/*\" -- npm run eslint",
+    "eslint":"npx eslint --quiet src/js/*",
+    "dev": "parallelshell \"npm run start:server\" \"npm run watch:scss\" \"npm run watch:eslint\""
   },
   "author": "kissonion24@gmail.com",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.21.2",
     "node-sass": "^4.14.1",
     "parallelshell": "^3.0.1"
   }
