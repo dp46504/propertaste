@@ -1,7 +1,26 @@
-body{
-    background-color: hsl(245, 50%, 70%);
-
-p{
-    color:red;
+*{
+    box-sizing: border-box;
 }
+:root{
+    font-size: 20px;
+}
+html, body{margin: 0;padding: 0;}
+
+$backgroundColor:	#E5E3CE;
+$textColor: #233A48;
+$greenColor:	#436E67;
+$redColor:	#6D1327;
+
+$medium:800px;
+
+body{
+    @media (max-width:$medium) {
+        background-color: $greenColor; 
+    }
+    background-color: $backgroundColor;
+}
+
+
+h2{
+    color: $textColor;
 }

@@ -1,1 +1,1 @@
-const imie = 'pawel';
+/* eslint-disable linebreak-style */
