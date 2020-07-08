@@ -14,12 +14,28 @@ $redColor:	#6D1327;
 $medium:800px;
 
 body{
-    @media (max-width:$medium) {
-        background-color: $greenColor; 
-    }
     background-color: $backgroundColor;
 }
 
+article{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    img{
+        width: 60vw;
+        height: 25vh;
+    }
+
+    p{
+        font-size: 1.75rem;
+        color: $textColor;
+        margin: 0;
+    }
+}
 
 h2{
     color: $textColor;
