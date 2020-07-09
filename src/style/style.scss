@@ -6,6 +6,9 @@
 }
 html, body{margin: 0;padding: 0;}
 
+
+
+//KOLORY ----------------------------
 $backgroundColor:	#E5E3CE;
 $textColor: #233A48;
 
@@ -20,6 +23,42 @@ $redColorTransparent:#b28b7e;
 
 $whiteColor: #f4f5eb;
 $whiteColorTransparent:#eeeedf;
+//-----------------------------------
+
+//ANIMACJE---------------------------
+@keyframes znikanie{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+@keyframes kulkaFullScreen{
+    from{}
+    to{transform: scale(20)}
+}
+
+@keyframes bounceSorryBox{
+    from{}
+    to{transform: translateY(-5px);}
+}
+//-----------------------------------
+
+//KLASY ANIMACJI---------------------
+.animacjaZnikanie{
+    animation:znikanie 500ms 1s both;
+}
+
+.animacjaPojawianie{
+    animation:znikanie 500ms both alternate-reverse;
+}
+
+.animacjaKulkaFullScreen{
+    animation: kulkaFullScreen 600ms 100ms both ease-in;
+}
+//-----------------------------------
 
 
 $medium:800px;
@@ -28,21 +67,9 @@ body{
     background-color: $backgroundColor;
 }
 
-@keyframes znikanie{
-from{
-    opacity: 1;
-}
-to{
-    opacity: 0;
-}
-}
 
-.animacjaZnikanie{
-    animation:znikanie 500ms 1s both;
-}
-.animacjaPojawianie{
-    animation:znikanie 500ms both alternate-reverse;
-}
+
+
 
 article{
     height: 100vh;
@@ -59,13 +86,8 @@ article{
     flex-direction: column;
 
 }
-@keyframes kulkaFullScreen{
-    from{}
-    to{transform: scale(20)}
-}
-.animacjaKulkaFullScreen{
-    animation: kulkaFullScreen 600ms 100ms both ease-in;
-}
+
+
         .kulka{
             width: 30vw;
             height: 30vw;
@@ -97,12 +119,6 @@ article{
             font-size: 1.75rem;
             color: $textColor;
             margin: 0;
-        }
-
-
-        @keyframes bounceSorryBox{
-            from{}
-            to{transform: translateY(-5px);}
         }
         .sorryBox{
             margin-top:10vh;
