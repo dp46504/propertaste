@@ -8,8 +8,19 @@ html, body{margin: 0;padding: 0;}
 
 $backgroundColor:	#E5E3CE;
 $textColor: #233A48;
-$greenColor:	#436E67;
-$redColor:	#6D1327;
+
+$greenColor:	#7e9389;
+$greenColorTransparent:#a3afa2;
+
+$blackColor:#7b7d7a;
+$blackColorTransparent:#a4a59c;
+
+$redColor:	#975f59;
+$redColorTransparent:#b28b7e;
+
+$whiteColor: #f4f5eb;
+$whiteColorTransparent:#eeeedf;
+
 
 $medium:800px;
 
@@ -17,25 +28,86 @@ body{
     background-color: $backgroundColor;
 }
 
+@keyframes znikanie{
+from{
+    opacity: 1;
+}
+to{
+    opacity: 0;
+}
+}
+
+.animacjaZnikanie{
+    animation:znikanie 500ms 1s both;
+}
+.animacjaPojawianie{
+    animation:znikanie 500ms both alternate-reverse;
+}
+
 article{
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    flex-direction: column;
+#menu{
+    height: 70vh;
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
 
-    img{
-        width: 60vw;
-        height: 25vh;
-    }
-
-    p{
-        font-size: 1.75rem;
-        color: $textColor;
-        margin: 0;
-    }
 }
+@keyframes kulkaFullScreen{
+    from{}
+    to{transform: scale(20)}
+}
+.animacjaKulkaFullScreen{
+    animation: kulkaFullScreen 600ms 100ms both ease-in;
+}
+        .kulka{
+            width: 30vw;
+            height: 30vw;
+            border-radius: 50%;
+        }
+
+        .zielona{
+            background-color: $greenColor;
+            // background-image: linear-gradient(to left, $greenColor, $greenColorTransparent );
+        }
+        .czarna{
+            background-color: $blackColor;
+            // background-image: linear-gradient(to left, $blackColor, $blackColorTransparent );
+        }
+        .czerwona{
+            background-color: $redColor;
+            // background-image: linear-gradient(to left, $redColor, $redColorTransparent );
+        }
+        .biala{
+            background-color: $whiteColor;
+            // background-image: linear-gradient(to left, $whiteColor, $whiteColorTransparent );
+        }
+
+        img{
+            width: 60vw;
+            height: 25vh;
+        }
+        p{
+            font-size: 1.75rem;
+            color: $textColor;
+            margin: 0;
+        }
+
+
+        @keyframes bounceSorryBox{
+            from{}
+            to{transform: translateY(-5px);}
+        }
+        .sorryBox{
+            margin-top:10vh;
+            animation: bounceSorryBox 1.5s 500ms both infinite alternate ease-in, znikanie 1s  alternate-reverse;
+        }
+    }
 
 h2{
     color: $textColor;
