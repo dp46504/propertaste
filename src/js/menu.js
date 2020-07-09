@@ -1,9 +1,10 @@
 /* eslint-disable linebreak-style */
 
-
+import pokazTimer from './timer.js';
 //Funkcja tworząca menu herbat
 export default ()=>{
 
+   
     
     //inicjacja elementow
     const menu = document.createElement("div");
@@ -28,6 +29,9 @@ export default ()=>{
     herbaty.forEach((value, key)=>{
         key.addEventListener('click', ()=>{
             key.classList.add('animacjaKulkaFullScreen');
+
+            //Wyswietlanie ekranu timera
+            pokazTimer(value);
         })
     });
 

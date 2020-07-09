@@ -36,7 +36,7 @@ $whiteColorTransparent:#eeeedf;
 }
 
 @keyframes kulkaFullScreen{
-    from{}
+    from{transform: scale(1.3);}
     to{transform: scale(20)}
 }
 
@@ -44,6 +44,7 @@ $whiteColorTransparent:#eeeedf;
     from{}
     to{transform: translateY(-5px);}
 }
+
 //-----------------------------------
 
 //KLASY ANIMACJI---------------------
@@ -56,7 +57,7 @@ $whiteColorTransparent:#eeeedf;
 }
 
 .animacjaKulkaFullScreen{
-    animation: kulkaFullScreen 600ms 100ms both ease-in;
+    animation: kulkaFullScreen 400ms both ease-in alternate 2;
 }
 //-----------------------------------
 

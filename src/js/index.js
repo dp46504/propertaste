@@ -27,7 +27,7 @@ window.addEventListener('load', ()=>{
 }else{
     const articleElement = document.querySelector('article');
     const sorryBox = document.createElement('div');
-    sorryBox.innerHTML="<p>Who is walking with his computer around kitchen nowadays? Switch to mobile</p>";
+    sorryBox.innerHTML="<p>Who is walking with his computer around kitchen nowadays? Switch to mobile!</p>";
     sorryBox.classList.add('sorryBox');
     articleElement.insertAdjacentElement('beforeend', sorryBox);
 }
