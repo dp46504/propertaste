@@ -25,6 +25,9 @@ export default (herbata)=>{
             const powrot = document.createElement('div')
             const strzalka = document.createElement('img')
 
+            //edytowanie timera
+            children[0].innerHTML=czasWMs
+
             //Edytowanie temperatura
             temperatura.innerHTML=temperaturaInfo
 
