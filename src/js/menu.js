@@ -25,13 +25,21 @@ export default ()=>{
         key.classList.add(value);
     });
 
+
     //dodanie animacji FullScreen do kazdej kulki na kliknieciu
     herbaty.forEach((value, key)=>{
-        key.addEventListener('click', ()=>{
+        key.addEventListener('click', function nasluchiwacz(){
             key.classList.add('animacjaKulkaFullScreen');
 
             //Wyswietlanie ekranu timera
-            pokazTimer(value);
+            //Tieout, zeby inne elementy zniknely dopiero kiedy kulka je zakryje
+            setTimeout(()=>{pokazTimer(value);}, 400)
+            
+
+            //Usuwanie eventlistenera
+            key.removeEventListener('click', nasluchiwacz)
+
+
         })
     });
 

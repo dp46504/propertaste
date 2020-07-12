@@ -1,12 +1,17 @@
+@font-face {
+    font-family: 'Sunflower';
+    src:  url('../src/fontSunflower.otf') format('opentype');
+  }
+
 *{
     box-sizing: border-box;
+    font-family: Sunflower;
 }
+
 :root{
     font-size: 20px;
 }
 html, body{margin: 0;padding: 0;}
-
-
 
 //KOLORY ----------------------------
 $backgroundColor:	#E5E3CE;
@@ -36,7 +41,7 @@ $whiteColorTransparent:#eeeedf;
 }
 
 @keyframes kulkaFullScreen{
-    from{transform: scale(1.3);}
+    from{transform: scale(1.75);}
     to{transform: scale(20)}
 }
 
@@ -74,7 +79,7 @@ body{
 
 article{
     height: 100vh;
-    max-height: 100%;
+    height:calc(var(--vh, 1vh)*100);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,19 +117,34 @@ article{
             // background-image: linear-gradient(to left, $whiteColor, $whiteColorTransparent );
         }
 
-        img{
+        #logoSvg{
             width: 60vw;
             height: 25vh;
         }
-        p{
+        p, #temperaturaBox{
             font-size: 1.75rem;
             color: $textColor;
             margin: 0;
         }
+
+        #temperaturaBox{
+            font-size: 1.1rem;
+        }
+
+        #ciekawostkiBox{
+            margin:2vh 0;
+            color: $textColor;
+        }
+
+        #strzalka{
+            width:50px;
+        }
+
         .sorryBox{
             margin-top:10vh;
             animation: bounceSorryBox 1.5s 500ms both infinite alternate ease-in, znikanie 1s  alternate-reverse;
         }
+
     }
 
 h2{
