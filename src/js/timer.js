@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 
-
+import menu from './menu.js';
 export default (herbata)=>{
     const menuObject = document.querySelector('#menu')
     const articleObject = document.querySelector('article')
@@ -51,6 +51,7 @@ export default (herbata)=>{
                     if(czasWs==-1){
                         clearInterval(interwal)
                         children[0].innerHTML = "ready"
+                        children[0].classList.add('animacjaKulkaFinished')
                     }
 
                 },1000)
@@ -72,19 +73,29 @@ export default (herbata)=>{
             //Obsluzenie dzialania strzalki (Powrot do Menu)
             powrot.addEventListener('click', function backToMenu(){
 
-                //Znikanie elementow
-                powrot.classList.add('animacjaZnikanieNoDelay');
-                ciekawostki.classList.add('animacjaZnikanieNoDelay');
-                temperatura.classList.add('animacjaZnikanieNoDelay');
+                //Dodanie elementu kulki o kolorze tla oraz dodanie jej animacji
+                const kulkaPowrot = document.createElement('div')
+                kulkaPowrot.classList.add('kulka')
+                kulkaPowrot.classList.add('kulkaPowrot')
+                kulkaPowrot.classList.add('animacjaKulkaPowrot')
 
-                //Animacja znikania tekstu timera
-                for(let i = children[0].innerHTML.length-1; i>=0; i--){
+                //Załączanie kulki do article
+                articleObject.appendChild(kulkaPowrot)
+
+                //Usuwanie wszystkiego z Art
+                setTimeout(()=>{
+                    articleObject.removeChild(powrot)
+                    articleObject.removeChild(menuObject)
+                    articleObject.removeChild(temperatura)
+
+                    menu()
                     setTimeout(()=>{
-                        
-                    },50)
-                }
+                        articleObject.removeChild(kulkaPowrot)
+                    },400)
+                },400)
 
-                
+            
+
                 powrot.removeEventListener('click', backToMenu)
             })
 
@@ -100,13 +111,38 @@ export default (herbata)=>{
             //Obsłużenie startu timera
             children[0].addEventListener('click', function handler(){
                 odliczanie()
+
+                //Dodanie efektu klikniecia przycisku na kulke przy starcie timera oraz usuniecie tej animacji po jej wykonaniu
+                children[0].classList.add('animacjaKulkaStart')
+                setTimeout(()=>{
+                children[0].classList.remove('animacjaKulkaStart')
+                },600)
+
                 children[0].removeEventListener('click', handler)
             })
 
             //Dodanie napisu start
             setTimeout(()=>{
+                
+                //Nadanie stanu z ostatniej klatki animacji kulkafullscreen przed jej usunieciem
+                children[0].style.transform='scale(1.75)'
+
+                //Usuniecie animacji kulkaFullScreen
+                children[0].classList.remove('animacjaKulkaFullScreen')
+
+
+                //Dodanie animacji pojawiania sie tekstu start
+                children[0].classList.add('animacjaPojawienieTekstu')
+
+                //Usuniecie animacji pojawiania sie tekstu
+                setTimeout(()=>{
+                    children[0].classList.remove('animacjaPojawienieTekstu')
+                },800)
+
                 children[0].innerHTML = 'start'
-            },800)
+            },400)
+
+            
 
             //dodanie elementow do article
             powrot.insertAdjacentElement('afterbegin', strzalka)
@@ -121,7 +157,7 @@ export default (herbata)=>{
             wyswietlanieWartosci(180000,'80°C-85°C')  
             break;
             case 'czarna':
-            wyswietlanieWartosci(5000, '90°C-100°C')    
+            wyswietlanieWartosci(2000, '90°C-100°C')    
             break;
             case 'czerwona':
             wyswietlanieWartosci(90000, '90°C-100°C')    

@@ -50,6 +50,37 @@ $whiteColorTransparent:#eeeedf;
     to{transform: translateY(-5px);}
 }
 
+@keyframes powrotKulka{
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(20);
+    }
+}
+
+@keyframes kulkaFinished {
+    from{transform: scale(1.75);}
+    to{transform: scale(2)}
+}
+
+@keyframes pojawienieSieTekstu{
+    from{
+        color:transparent;
+    }
+    to{
+        color: $textColor;
+    }
+}
+
+@keyframes kulkaStart{
+    from{
+        transform: scale(1.75);
+    }
+    to{
+        transform: scale(1.5);
+    }
+}
 //-----------------------------------
 
 //KLASY ANIMACJI---------------------
@@ -67,6 +98,18 @@ $whiteColorTransparent:#eeeedf;
 
 .animacjaKulkaFullScreen{
     animation: kulkaFullScreen 400ms both ease-in alternate 2;
+}
+.animacjaKulkaPowrot{
+    animation: powrotKulka 500ms both ease-in alternate 2;
+}
+.animacjaKulkaFinished{
+    animation: kulkaFinished 2s both cubic-bezier(0.785, 0.135, 0.15, 0.86) alternate infinite;
+}
+.animacjaPojawienieTekstu{
+    animation: pojawienieSieTekstu 800ms both ease-in-out;
+}
+.animacjaKulkaStart{
+    animation: kulkaStart 300ms both ease-in-out alternate 2;
 }
 //-----------------------------------
 
@@ -107,7 +150,10 @@ article{
             justify-content: center;
             align-items: center;
         }
-
+        .kulkaPowrot{
+            background-color: $backgroundColor;
+            position: absolute;
+        }
         .zielona{
             background-color: $greenColor;
             // background-image: linear-gradient(to left, $greenColor, $greenColorTransparent );
@@ -146,6 +192,10 @@ article{
 
         #strzalka{
             width:50px;
+        }
+        #powrotStrzalka{
+            position: absolute;
+            margin: -40vh -40vw;
         }
 
         .sorryBox{
