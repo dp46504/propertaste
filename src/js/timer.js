@@ -24,22 +24,66 @@ export default (herbata)=>{
             const ciekawostki = document.createElement('div')
             const powrot = document.createElement('div')
             const strzalka = document.createElement('img')
+            
+            
+            //Konwersja timera z ms do s
+            let czasWs = czasWMs / 1000
+            let sekundy;
+            let minuty;
 
-            //edytowanie timera
-            children[0].innerHTML=czasWMs
+            //Odliczanie timera w kółku
+            const odliczanie = ()=>{
+                let interwal = setInterval(()=>{
+                    
+                    //konwersja timera z ms do s
+                    sekundy = czasWs % 60
+                    minuty = Math.floor(czasWs / 60)
+                    //edytowanie timera
+                    if(sekundy==0){
+                        children[0].innerHTML = minuty + ':00'
+                    }else if(sekundy<10){
+                        children[0].innerHTML = minuty + ':0' + sekundy
+                    }else{
+                        children[0].innerHTML = minuty + ':' + sekundy
+                    }
+                    czasWs -= 1;
+
+                    if(czasWs==-1){
+                        clearInterval(interwal)
+                        children[0].innerHTML = "ready"
+                    }
+
+                },1000)
+
+                
+            }
+
+
 
             //Edytowanie temperatura
             temperatura.innerHTML=temperaturaInfo
 
             //Edytowanie ciekawostek
-            ciekawostki.innerHTML='ciekawostka fajna odnosnie herbaty tej'
+            ciekawostki.innerHTML='this is ciekawoskta in english'
 
             //Edytowanie powrotu
             strzalka.src='../../design/arrow_left.svg'
 
             //Obsluzenie dzialania strzalki (Powrot do Menu)
             powrot.addEventListener('click', function backToMenu(){
-                console.log('Powrot do menu');
+
+                //Znikanie elementow
+                powrot.classList.add('animacjaZnikanieNoDelay');
+                ciekawostki.classList.add('animacjaZnikanieNoDelay');
+                temperatura.classList.add('animacjaZnikanieNoDelay');
+
+                //Animacja znikania tekstu timera
+                for(let i = children[0].innerHTML.length-1; i>=0; i--){
+                    setTimeout(()=>{
+                        
+                    },50)
+                }
+
                 
                 powrot.removeEventListener('click', backToMenu)
             })
@@ -51,6 +95,18 @@ export default (herbata)=>{
             temperatura.id='temperaturaBox'
             ciekawostki.id='ciekawostkiBox'
             powrot.id='powrotStrzalka'
+
+
+            //Obsłużenie startu timera
+            children[0].addEventListener('click', function handler(){
+                odliczanie()
+                children[0].removeEventListener('click', handler)
+            })
+
+            //Dodanie napisu start
+            setTimeout(()=>{
+                children[0].innerHTML = 'start'
+            },800)
 
             //dodanie elementow do article
             powrot.insertAdjacentElement('afterbegin', strzalka)
@@ -65,7 +121,7 @@ export default (herbata)=>{
             wyswietlanieWartosci(180000,'80°C-85°C')  
             break;
             case 'czarna':
-            wyswietlanieWartosci(90000, '90°C-100°C')    
+            wyswietlanieWartosci(5000, '90°C-100°C')    
             break;
             case 'czerwona':
             wyswietlanieWartosci(90000, '90°C-100°C')    

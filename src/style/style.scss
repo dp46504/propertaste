@@ -57,6 +57,10 @@ $whiteColorTransparent:#eeeedf;
     animation:znikanie 500ms 1s both;
 }
 
+.animacjaZnikanieNoDelay{
+    animation:znikanie 500ms both;
+}
+
 .animacjaPojawianie{
     animation:znikanie 500ms both alternate-reverse;
 }
@@ -98,7 +102,10 @@ article{
             width: 30vw;
             height: 30vw;
             border-radius: 50%;
-            text-align: center;
+            color: $textColor;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .zielona{
