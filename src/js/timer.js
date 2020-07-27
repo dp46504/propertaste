@@ -31,6 +31,18 @@ export default (herbata)=>{
             let sekundy;
             let minuty;
 
+            //Dodanie pliku dzwiekowego na koniec odliczania
+            const ready_sound = new Audio('../../design/ready_sound.wav')
+
+            //Funkcja zapetlajaca dzwiek
+            const sound_repeat = ()=>{
+                ready_sound.currentTime=0
+                ready_sound.play()
+            }
+
+            //Zapetlanie dzwieku
+            ready_sound.addEventListener('ended', sound_repeat)
+
             //Odliczanie timera w kółku
             const odliczanie = ()=>{
                 let interwal = setInterval(()=>{
@@ -49,9 +61,11 @@ export default (herbata)=>{
                     czasWs -= 1;
 
                     if(czasWs==-1){
+                            //Koniec odliczania
                         clearInterval(interwal)
                         children[0].innerHTML = "ready"
                         children[0].classList.add('animacjaKulkaFinished')
+                        ready_sound.play()
                     }
 
                 },1000)
@@ -94,7 +108,8 @@ export default (herbata)=>{
                     },400)
                 },400)
 
-            
+                //Usuwanie listenera pliku dzwiekowego 
+                ready_sound.removeEventListener('ended', sound_repeat)
 
                 powrot.removeEventListener('click', backToMenu)
             })

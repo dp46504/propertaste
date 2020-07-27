@@ -195,7 +195,8 @@ article{
         }
         #powrotStrzalka{
             position: absolute;
-            margin: -40vh -40vw;
+            top: 3vh;
+            left: calc(6vh*(9/16));
         }
 
         .sorryBox{
