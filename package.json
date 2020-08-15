@@ -13,7 +13,8 @@
   "author": "kissonion24@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "babel-eslint": "^10.1.0"
+    "babel-eslint": "^10.1.0",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "eslint": "^7.3.0",

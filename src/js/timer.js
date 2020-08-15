@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
-
 import menu from './menu.js';
+
 export default (herbata)=>{
     const menuObject = document.querySelector('#menu')
     const articleObject = document.querySelector('article')
