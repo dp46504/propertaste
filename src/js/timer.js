@@ -84,21 +84,36 @@ export default (herbata)=>{
 
             xhr.open('get', url)
 
+            let interval
+        
             xhr.onreadystatechange = ()=>{
                 if(xhr.readyState==4 && xhr.status==200){
-                    console.log('dziala')
+                    const resObj = JSON.parse(xhr.responseText)
+                    console.log(resObj)
+                    //Logika wyswietlania roznych ciekawostek
+                    document.querySelector('#ciekawostkiBox').innerHTML = resObj['ciekawostka1']
+
+                    let i=2
+                    interval = setInterval(()=>{
+                        document.querySelector('#ciekawostkiBox').innerHTML = resObj[`ciekawostka${i}`]
+                        
+
+                        i==3?i=1:i++
+                    }, 5000)
+
                 }
             }
+
             xhr.send()
 
-            ciekawostki.innerHTML=url
+            
 
             //Edytowanie powrotu
             strzalka.src='../../design/arrow_left.svg'
 
             //Obsluzenie dzialania strzalki (Powrot do Menu)
             powrot.addEventListener('click', function backToMenu(){
-
+                clearInterval(interval)
                 //Dodanie elementu kulki o kolorze tla oraz dodanie jej animacji
                 const kulkaPowrot = document.createElement('div')
                 kulkaPowrot.classList.add('kulka')
@@ -184,7 +199,7 @@ export default (herbata)=>{
             wyswietlanieWartosci(180000,'80°C-85°C')  
             break;
             case 'czarna':
-            wyswietlanieWartosci(2000, '90°C-100°C')    
+            wyswietlanieWartosci(90000, '90°C-100°C')    
             break;
             case 'czerwona':
             wyswietlanieWartosci(90000, '90°C-100°C')    
