@@ -79,7 +79,19 @@ export default (herbata)=>{
             temperatura.innerHTML=temperaturaInfo
 
             //Edytowanie ciekawostek
-            ciekawostki.innerHTML='this is ciekawoskta in english'
+            const xhr = new XMLHttpRequest()
+            const url = `https://propertasteapp.azurewebsites.net/tips/${herbata}`
+
+            xhr.open('get', url)
+
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState==4 && xhr.status==200){
+                    console.log('dziala')
+                }
+            }
+            xhr.send()
+
+            ciekawostki.innerHTML=url
 
             //Edytowanie powrotu
             strzalka.src='../../design/arrow_left.svg'
