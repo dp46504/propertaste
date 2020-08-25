@@ -114,15 +114,13 @@ $whiteColorTransparent:#eeeedf;
 //-----------------------------------
 
 
-$medium:800px;
+$medium: 800px;
+$phone: 450px;
+$phoneS: 330px;
 
 body{
     background-color: $backgroundColor;
 }
-
-
-
-
 
 article{
     height: 100vh;
@@ -142,14 +140,36 @@ article{
 }
 
 
-        .kulka{
-            width: 30vw;
-            height: 30vw;
+        .kulka{                   
+            width: 23vw;
+            max-width: 23vw;
+            min-width: 23vw;
+            height: 23vw;
+            max-height: 23vw;
+            min-height: 23vw;
             border-radius: 50%;
             color: $textColor;
             display: flex;
             justify-content: center;
             align-items: center;
+
+            @media (max-width: $phone) {
+                width: 30vw;
+                max-width: 30vw;
+                min-width: 30vw;
+                height: 30vw;
+                max-height: 30vw;
+                min-height: 30vw;
+            }
+
+            @media (max-width: $phoneS) {
+                width: 35vw;
+                max-width: 35vw;
+                min-width: 35vw;
+                height: 35vw;
+                max-height: 35vw;
+                min-height: 35vw;
+            }
         }
         .kulkaPowrot{
             background-color: $backgroundColor;
