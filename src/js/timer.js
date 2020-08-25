@@ -91,13 +91,20 @@ export default (herbata)=>{
                     const resObj = JSON.parse(xhr.responseText)
                     console.log(resObj)
                     //Logika wyswietlania roznych ciekawostek
+                    document.querySelector('#ciekawostkiBox').classList += ' animacjaPojawianie'
                     document.querySelector('#ciekawostkiBox').innerHTML = resObj['ciekawostka1']
+                    setTimeout(()=>{
+                        document.querySelector('#ciekawostkiBox').classList -= ' animacjaPojawianie'
+                    },600)
 
                     let i=2
                     interval = setInterval(()=>{
+                        document.querySelector('#ciekawostkiBox').classList += ' animacjaPojawianie'
+                        setTimeout(()=>{
+                            document.querySelector('#ciekawostkiBox').classList -= ' animacjaPojawianie'
+                        },600)
                         document.querySelector('#ciekawostkiBox').innerHTML = resObj[`ciekawostka${i}`]
                         
-
                         i==3?i=1:i++
                     }, 5000)
 
