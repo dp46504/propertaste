@@ -80,7 +80,7 @@ export default (herbata)=>{
 
             //Edytowanie ciekawostek
             const xhr = new XMLHttpRequest()
-            const url = `https://propertasteapp.azurewebsites.net/tips/${herbata}`
+            const url = `https://cors-anywhere.herokuapp.com/https://propertasteapi.herokuapp.com/tips/${herbata}`
 
             xhr.open('get', url)
 
