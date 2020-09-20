@@ -117,6 +117,7 @@ export default (herbata)=>{
 
             //Edytowanie powrotu
             strzalka.src='https://svgshare.com/s/PpT.svg'
+            strzalka.type='svg+xml'
 
             //Obsluzenie dzialania strzalki (Powrot do Menu)
             powrot.addEventListener('click', function backToMenu(){
