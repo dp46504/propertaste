@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
+  	"start":"parcel index.html",
     "build:css": "node-sass --output-style compressed ./src/style/style.scss -o ./dist/",
     "start:server": "browser-sync start --server --files './src/**/*, ./dist/*, ./index.html '",
     "watch:scss": "onchange -v \"src/style/style.scss\" -- npm run build:css",
